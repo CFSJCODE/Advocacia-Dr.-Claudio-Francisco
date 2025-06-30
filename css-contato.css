@@ -1,0 +1,58 @@
+/* Define as cores personalizadas do Tailwind CSS baseadas no logo */
+:root {
+    --color-primary: #5B524A; /* Fundo escuro do logo */
+    --color-accent: #D4C597; /* Texto dourado do logo */
+    --color-neutral-dark: #333333;
+    --color-neutral-light: #f3f4f6;
+}
+
+.bg-primary { background-color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.border-accent { border-color: var(--color-accent); }
+.bg-neutral-dark { background-color: var(--color-neutral-dark); }
+.bg-neutral-light { background-color: var(--color-neutral-light); }
+
+html, body {
+    height: 100%; /* Garante que HTML e Body ocupem toda a altura do viewport */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-neutral-dark); /* Fundo geral escuro */
+    color: var(--color-neutral-light); /* Cor de texto padrão */
+    display: flex; /* Garante que o body use flexbox para preencher a tela */
+    flex-direction: column; /* Organiza os elementos em coluna */
+}
+
+/* Estilos para o efeito "liquid glass" / "fluent design" */
+.glass-effect {
+    background-color: rgba(91, 82, 74, 0.6); /* Cor primária com transparência */
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(212, 197, 151, 0.3); /* Borda transparente com cor de acento */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.glass-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 8px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para botões com efeito similar */
+.btn-glass {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem; /* rounded-xl */
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-glass:hover {
+    background-color: rgba(212, 197, 151, 0.8); /* Cor de acento um pouco mais transparente */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
