@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página em Construção | Advocacia Dr. Cláudio Francisco</title>
+    <!-- Inclui o Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define as cores personalizadas do Tailwind CSS baseadas no logo */
+        :root {
+            --color-primary: #5B524A; /* Fundo escuro do logo */
+            --color-accent: #D4C597; /* Texto dourado do logo */
+            --color-neutral-dark: #333333;
+            --color-neutral-light: #f3f4f6;
+            --color-gradient-darker: #23201d; /* Tom mais escuro para o gradiente */
+        }
+
+        .bg-primary { background-color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .border-accent { border-color: var(--color-accent); }
+        .bg-neutral-dark { background-color: var(--color-neutral-dark); }
+        .bg-neutral-light { background-color: var(--color-neutral-light); }
+
+        html, body {
+            height: 100%; /* Garante que HTML e Body ocupem toda a altura do viewport */
+            overflow: hidden; /* Desativa o scroll da página */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-neutral-light); /* Cor de texto padrão */
+            display: flex; /* Garante que o body use flexbox para preencher a tela */
+            flex-direction: column; /* Organiza os elementos em coluna */
+            /* Fundo com gradiente animado para um visual mais dinâmico */
+            background: linear-gradient(-45deg, var(--color-neutral-dark), var(--color-primary), var(--color-gradient-darker), var(--color-neutral-dark));
+            background-size: 400% 400%;
+            animation: gradient-animation 20s ease infinite;
+        }
+
+        /* Animação do gradiente de fundo */
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Estilos para o efeito "liquid glass" / "fluent design" */
+        .glass-effect {
+            background-color: rgba(91, 82, 74, 0.6); /* Cor primária com transparência */
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(212, 197, 151, 0.3); /* Borda transparente com cor de acento */
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cores para o Tailwind JIT */
+        .tailwind-config-colors {
+            display: none; /* Esconde este elemento */
+        }
+    </style>
+    <script>
+        // Configuração personalizada do Tailwind CSS para usar as variáveis CSS
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        accent: 'var(--color-accent)',
+                        'neutral-dark': 'var(--color-neutral-dark)',
+                        'neutral-light': 'var(--color-neutral-light)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-dark text-neutral-light">
+
+    <!-- Cabeçalho / Navbar com efeito de desfoque -->
+    <header class="w-full py-4 px-6 md:px-12 bg-primary/80 backdrop-blur-sm shadow-lg z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <!-- Logo ou Nome do Escritório -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://i.ibb.co/8gwSy62V/baixados.png" alt="Logo da Advocacia Dr. Cláudio Francisco" class="h-10 w-auto">
+                <span class="text-xl font-black uppercase tracking-wider text-accent hover:text-accent transition-colors duration-300">Advocacia Dr. Cláudio Francisco</span>
+            </a>
+
+            <!-- Menu para Desktop -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-neutral-light border-b-2 border-transparent hover:text-accent hover:border-accent py-2 text-sm font-medium transition-colors duration-300">Início</a>
+                <a href="sobre-nos.html" class="text-neutral-light border-b-2 border-transparent hover:text-accent hover:border-accent py-2 text-sm font-medium transition-colors duration-300">Sobre Nós</a>
+                <a href="servicos.html" class="text-neutral-light border-b-2 border-transparent hover:text-accent hover:border-accent py-2 text-sm font-medium transition-colors duration-300">Serviços</a>
+                <a href="contato.html" class="text-neutral-light border-b-2 border-transparent hover:text-accent hover:border-accent py-2 text-sm font-medium transition-colors duration-300">Contato</a>
+            </div>
+
+            <!-- Botão do Menu Hamburguer para Mobile -->
+            <div class="md:hidden">
+                <button id="menu-button" class="text-neutral-light focus:outline-none">
+                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menu para Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary/95 rounded-lg shadow-xl mt-4">
+            <ul class="flex flex-col items-center py-4 space-y-4">
+                <li><a href="index.html" class="block py-2 px-6 text-sm text-neutral-light hover:bg-primary">Início</a></li>
+                <li><a href="sobre-nos.html" class="block py-2 px-6 text-sm text-neutral-light hover:bg-primary">Sobre Nós</a></li>
+                <li><a href="servicos.html" class="block py-2 px-6 text-sm text-neutral-light hover:bg-primary">Serviços</a></li>
+                <li><a href="contato.html" class="block py-2 px-6 text-sm text-neutral-light hover:bg-primary">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center">
+        <!-- Seção de Construção -->
+        <section class="relative w-full h-full flex items-center justify-center p-4 overflow-hidden">
+            <div class="relative z-10 text-center max-w-2xl glass-effect p-8 md:p-12">
+                <div class="flex justify-center mb-6">
+                    <svg class="w-20 h-20 text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.878-5.878m0 0L11.42 15.17m5.878-5.878L11.42 15.17m5.878-5.878L17.25 21m-5.83-15.17a2.652 2.652 0 0 0-3.75 0L3 8.25l5.878 5.878m0 0L11.42 8.25m-5.878 5.878L3 8.25m5.878 5.878L8.25 21m3.17-15.17L6 8.25m0 0L8.25 6l3.17 3.17m0 0L15 6l-3.17 3.17m0 0L8.25 12l3.17-3.17Z" />
+                    </svg>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-accent mb-4">
+                    Página em Construção
+                </h1>
+                <p class="text-lg text-neutral-light mb-8 max-w-md mx-auto">
+                    Estamos trabalhando para trazer o melhor conteúdo para você. Volte em breve!
+                </p>
+                <a href="index.html" class="inline-block bg-accent text-primary font-bold text-lg py-3 px-8 rounded-lg shadow-lg hover:bg-white hover:text-primary transform hover:scale-105 transition-all duration-300">
+                    Voltar ao Início
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-primary py-8 text-center text-neutral-light text-sm shadow-inner">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 Advocacia Dr. Cláudio Francisco. Todos os direitos reservados.</p>
+            <p class="mt-2">
+                CLAUDIO FRANCISCO SOCIEDADE INDIVIDUAL DE ADVOCACIA
+                <br>
+                CNPJ: 61.327.792/0001-06
+            </p>
+            <p class="mt-4 text-xs text-neutral-light/70">
+                Site criado e mantido por 
+                <a href="https://cfsjcode.github.io/CFSJ-TECH/" target="_blank" rel="noopener noreferrer" class="font-semibold text-neutral-light/90 hover:text-accent transition-colors">CFSJ TECH</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica para o menu mobile
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fechar o menu mobile ao clicar em um link
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
