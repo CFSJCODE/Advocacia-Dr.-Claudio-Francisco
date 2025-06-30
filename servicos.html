@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Advocacia Dr. Cláudio Francisco</title>
+    <!-- Inclui o Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define as cores personalizadas do Tailwind CSS baseadas no logo */
+        :root {
+            --color-primary: #5B524A; /* Fundo escuro do logo */
+            --color-accent: #D4C597; /* Texto dourado do logo */
+            --color-neutral-dark: #333333;
+            --color-neutral-light: #f3f4f6;
+        }
+
+        .bg-primary { background-color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .border-accent { border-color: var(--color-accent); }
+        .bg-neutral-dark { background-color: var(--color-neutral-dark); }
+        .bg-neutral-light { background-color: var(--color-neutral-light); }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-neutral-dark); /* Fundo geral escuro */
+            color: var(--color-neutral-light); /* Cor de texto padrão */
+            display: flex; /* Garante que o body use flexbox para preencher a tela */
+            flex-direction: column; /* Organiza os elementos em coluna */
+            min-height: 100vh; /* Garante que o body ocupe no mínimo a altura da tela */
+        }
+
+        /* Estilos para o efeito "liquid glass" / "fluent design" */
+        .glass-effect {
+            background-color: rgba(91, 82, 74, 0.6); /* Cor primária com transparência */
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(212, 197, 151, 0.3); /* Borda transparente com cor de acento */
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 8px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Estilo para ícones SVG */
+        .icon {
+            color: var(--color-accent);
+            width: 3.5rem;
+            height: 3.5rem;
+            stroke-width: 1.5;
+        }
+
+        /* Cores para o Tailwind JIT */
+        .tailwind-config-colors {
+            display: none; /* Esconde este elemento */
+        }
+    </style>
+    <script>
+        // Configuração personalizada do Tailwind CSS para usar as variáveis CSS
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        accent: 'var(--color-accent)',
+                        'neutral-dark': 'var(--color-neutral-dark)',
+                        'neutral-light': 'var(--color-neutral-light)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-dark text-neutral-light">
+
+    <!-- Cabeçalho / Navbar com efeito de desfoque -->
+    <header class="w-full py-4 px-6 md:px-12 bg-primary/80 backdrop-blur-sm shadow-lg z-50 sticky top-0">
+        <nav class="container mx-auto flex justify-between items-center">
+            <!-- Logo ou Nome do Escritório -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://i.ibb.co/8gwSy62V/baixados.png" alt="Logo da Advocacia Dr. Cláudio Francisco" class="h-10 w-auto">
+                <span class="text-xl font-black uppercase tracking-wider text-accent hover:text-accent transition-colors duration-300">Advocacia Dr. Cláudio Francisco</span>
+            </a>
+
+            <!-- Menu para Desktop -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-neutral-light border-b-2 border-transparent hover:text-accent hover:border-accent py-2 text-sm font-medium transition-colors duration-300">Início</a>
+                <a href="sobre-nos.html" class="text-neutral-light border-b-2 border-transparent hover:text-accent hover:border-accent py-2 text-sm font-medium transition-colors duration-300">Sobre Nós</a>
+                <a href="servicos.html" class="text-accent border-b-2 border-accent py-2 text-sm font-medium" aria-current="page">Serviços</a>
+                <a href="contato.html" class="text-neutral-light border-b-2 border-transparent hover:text-accent hover:border-accent py-2 text-sm font-medium transition-colors duration-300">Contato</a>
+            </div>
+
+            <!-- Botão do Menu Hamburguer para Mobile -->
+            <div class="md:hidden">
+                <button id="menu-button" class="text-neutral-light focus:outline-none">
+                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menu para Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary/95 rounded-lg shadow-xl mt-4">
+            <ul class="flex flex-col items-center py-4 space-y-4">
+                <li><a href="index.html" class="block py-2 px-6 text-sm text-neutral-light hover:bg-primary hover:text-neutral-light">Início</a></li>
+                <li><a href="sobre-nos.html" class="block py-2 px-6 text-sm text-neutral-light hover:bg-primary hover:text-neutral-light">Sobre Nós</a></li>
+                <li><a href="servicos.html" class="block py-2 px-6 text-sm text-accent">Serviços</a></li>
+                <li><a href="contato.html" class="block py-2 px-6 text-sm text-neutral-light hover:bg-primary hover:text-neutral-light">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Seção de Serviços -->
+        <section id="servicos" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <!-- Título da Seção -->
+                <div class="text-center mb-12 md:mb-16">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-accent mb-4">Nossas Áreas de Atuação</h1>
+                    <p class="text-lg md:text-xl text-neutral-light max-w-3xl mx-auto text-justify">
+                        Com foco em Direito Trabalhista, Previdenciário e Cível, oferecemos uma assessoria jurídica completa, aliando conhecimento técnico e atendimento personalizado para defender seus interesses.
+                    </p>
+                </div>
+
+                <!-- Grid de Serviços Principais -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                    <!-- Card de Serviço: Direito Trabalhista -->
+                    <div class="glass-effect service-card p-8 flex flex-col items-center text-center">
+                        <div class="mb-5">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-accent mb-3">Direito Trabalhista</h3>
+                        <p class="text-neutral-light leading-relaxed text-justify">
+                            Defesa dos direitos de trabalhadores e empresas em todas as instâncias. Atuamos em casos de rescisão, horas extras, assédio moral, acidentes de trabalho e outras questões contratuais.
+                        </p>
+                    </div>
+
+                    <!-- Card de Serviço: Direito Previdenciário -->
+                    <div class="glass-effect service-card p-8 flex flex-col items-center text-center">
+                        <div class="mb-5">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21v-1a6 6 0 00-5.176-5.97m8.176 5.97h3.113a2.25 2.25 0 002.25-2.25v-1.586a2.25 2.25 0 00-2.25-2.25h-3.113m-13.5 0a2.25 2.25 0 00-2.25 2.25v1.586c0 1.24 1.01 2.25 2.25 2.25h3.113" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-accent mb-3">Direito Previdenciário</h3>
+                        <p class="text-neutral-light leading-relaxed text-justify">
+                            Auxiliamos na obtenção de benefícios junto ao INSS, como aposentadorias (idade, invalidez, especial), auxílio-doença, pensão por morte e BPC/LOAS. Cuidamos de todo o processo, do administrativo ao judicial.
+                        </p>
+                    </div>
+
+                    <!-- Card de Serviço: Direito Cível -->
+                    <div class="glass-effect service-card p-8 flex flex-col items-center text-center">
+                        <div class="mb-5">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6M9 11.25h6M9 15.75h6M5.25 6.75h.008v.008H5.25V6.75zm0 4.5h.008v.008H5.25v-4.5zm0 4.5h.008v.008H5.25v-4.5zm13.5-9h.008v.008h-.008V6.75zm0 4.5h.008v.008h-.008v-4.5zm0 4.5h.008v.008h-.008v-4.5z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-accent mb-3">Direito Cível</h3>
+                        <p class="text-neutral-light leading-relaxed text-justify">
+                            Atuação em uma vasta gama de litígios cíveis, incluindo direito do consumidor, contratos, responsabilidade civil (indenizações), posse e propriedade, e questões de família e sucessões.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Call to Action Agressiva -->
+        <section class="py-16 md:py-20 bg-neutral-dark">
+            <div class="container mx-auto px-6">
+                <div class="glass-effect bg-primary/80 border-2 border-accent/50 text-center p-8 md:p-12 rounded-3xl shadow-2xl">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-accent mb-4 uppercase">
+                        Não espere seu direito se perder no tempo!
+                    </h2>
+                    <p class="text-lg md:text-xl text-neutral-light mb-8 max-w-3xl mx-auto text-justify">
+                        Cada segundo conta. A demora em agir pode custar caro e, em muitos casos, levar à perda definitiva do seu direito. Nossa equipe está pronta para uma atuação imediata e decisiva.
+                    </p>
+                    <a href="contato.html" class="inline-block bg-accent text-primary font-bold text-lg py-4 px-10 rounded-lg shadow-lg hover:bg-white hover:text-primary transform hover:scale-105 transition-all duration-300">
+                        FALE COM UM ESPECIALISTA AGORA
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Outras Áreas -->
+        <section class="pb-16 md:pb-24 bg-neutral-dark">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-neutral-light mb-4">Atuação Abrangente</h2>
+                    <p class="text-lg text-neutral-light max-w-2xl mx-auto mb-8 text-justify">
+                        Além de nossas especialidades, nossa equipe está preparada para atender demandas em diversas outras áreas do Direito, garantindo uma solução jurídica integrada.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                        <span class="bg-primary/70 text-accent py-2 px-5 rounded-full text-sm font-semibold">Direito do Consumidor</span>
+                        <span class="bg-primary/70 text-accent py-2 px-5 rounded-full text-sm font-semibold">Direito de Família</span>
+                        <span class="bg-primary/70 text-accent py-2 px-5 rounded-full text-sm font-semibold">Sucessões e Inventários</span>
+                        <span class="bg-primary/70 text-accent py-2 px-5 rounded-full text-sm font-semibold">Direito Contratual</span>
+                        <span class="bg-primary/70 text-accent py-2 px-5 rounded-full text-sm font-semibold">Direito Imobiliário</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-primary py-8 text-center text-neutral-light text-sm shadow-inner mt-auto">
+        <div class="container mx-auto">
+            <p>&copy; 2025 Advocacia Dr. Cláudio Francisco. Todos os direitos reservados.</p>
+            <p class="mt-2">
+                CLAUDIO FRANCISCO SOCIEDADE INDIVIDUAL DE ADVOCACIA
+                <br>
+                CNPJ: 61.327.792/0001-06
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica para o menu mobile
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fechar o menu mobile ao clicar em um link
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
