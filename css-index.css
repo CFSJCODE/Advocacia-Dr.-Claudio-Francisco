@@ -1,0 +1,64 @@
+/* Define as cores personalizadas do Tailwind CSS baseadas no logo */
+:root {
+    --color-primary: #5B524A; /* Fundo escuro do logo */
+    --color-accent: #D4C597; /* Texto dourado do logo */
+    --color-neutral-dark: #333333;
+    --color-neutral-light: #f3f4f6;
+    --color-gradient-darker: #23201d; /* Tom mais escuro para o gradiente */
+}
+
+.bg-primary { background-color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.border-accent { border-color: var(--color-accent); }
+.bg-neutral-dark { background-color: var(--color-neutral-dark); }
+.bg-neutral-light { background-color: var(--color-neutral-light); }
+
+html, body {
+    height: 100%; /* Garante que HTML e Body ocupem toda a altura do viewport */
+    overflow: hidden; /* Desativa o scroll da página */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-neutral-light); /* Cor de texto padrão */
+    display: flex; /* Garante que o body use flexbox para preencher a tela */
+    flex-direction: column; /* Organiza os elementos em coluna */
+    /* Fundo com gradiente animado para um visual mais dinâmico */
+    background: linear-gradient(-45deg, var(--color-neutral-dark), var(--color-primary), var(--color-gradient-darker), var(--color-neutral-dark));
+    background-size: 400% 400%;
+    animation: gradient-animation 20s ease infinite;
+}
+
+/* Animação do gradiente de fundo */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Estilos para o efeito "liquid glass" / "fluent design" */
+.glass-effect {
+    background-color: rgba(91, 82, 74, 0.6); /* Cor primária com transparência */
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(212, 197, 151, 0.3); /* Borda transparente com cor de acento */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.glass-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 8px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Cores para o Tailwind JIT */
+.tailwind-config-colors {
+    display: none; /* Esconde este elemento */
+}
