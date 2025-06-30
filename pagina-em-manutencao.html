@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO e Metadados Otimizados -->
     <title>Página em Manutenção | Advocacia Dr. Cláudio Francisco</title>
     <meta name="description" content="Nosso site está em manutenção. O escritório de advocacia do Dr. Cláudio Francisco em Belo Horizonte (BH) está trabalhando para melhorar. Atendemos no Barreiro, Milionários e região.">
@@ -29,58 +29,13 @@
 
     <!-- Inclui o Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fontes e Estilos Externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Define as cores personalizadas do Tailwind CSS baseadas no logo */
-        :root {
-            --color-primary: #5B524A; /* Fundo escuro do logo */
-            --color-accent: #D4C597; /* Texto dourado do logo */
-            --color-neutral-dark: #333333;
-            --color-neutral-light: #f3f4f6;
-            --color-gradient-darker: #23201d; /* Tom mais escuro para o gradiente */
-        }
+    <link rel="stylesheet" href="css-manutencao.css">
 
-        .bg-primary { background-color: var(--color-primary); }
-        .text-accent { color: var(--color-accent); }
-        .border-accent { border-color: var(--color-accent); }
-        .bg-neutral-dark { background-color: var(--color-neutral-dark); }
-        .bg-neutral-light { background-color: var(--color-neutral-light); }
-
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--color-neutral-light); /* Cor de texto padrão */
-            display: flex; /* Garante que o body use flexbox para preencher a tela */
-            flex-direction: column; /* Organiza os elementos em coluna */
-            min-height: 100vh;
-            /* Fundo com gradiente animado para um visual mais dinâmico */
-            background: linear-gradient(-45deg, var(--color-neutral-dark), var(--color-primary), var(--color-gradient-darker), var(--color-neutral-dark));
-            background-size: 400% 400%;
-            animation: gradient-animation 20s ease infinite;
-        }
-
-        /* Animação do gradiente de fundo */
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Estilos para o efeito "liquid glass" / "fluent design" */
-        .glass-effect {
-            background-color: rgba(91, 82, 74, 0.6); /* Cor primária com transparência */
-            backdrop-filter: blur(10px) saturate(180%);
-            -webkit-backdrop-filter: blur(10px) saturate(180%);
-            border: 1px solid rgba(212, 197, 151, 0.3); /* Borda transparente com cor de acento */
-            border-radius: 1.5rem; /* rounded-3xl */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
     <script>
         // Configuração personalizada do Tailwind CSS para usar as variáveis CSS
         tailwind.config = {
@@ -170,19 +125,6 @@
         </div>
     </footer>
 
-    <script>
-        // Lógica para o menu mobile
-        document.getElementById('menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Fechar o menu mobile ao clicar em um link
-        document.querySelectorAll('#mobile-menu a').forEach(item => {
-            item.addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
-        });
-    </script>
+    <script src="script-manutencao.js" defer></script>
 </body>
 </html>
