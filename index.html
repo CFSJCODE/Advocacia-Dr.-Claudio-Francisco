@@ -34,7 +34,67 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css-index.css">
+    
+    <style>
+        /* Define as cores personalizadas do Tailwind CSS baseadas no logo */
+        :root {
+            --color-primary: #5B524A; /* Fundo escuro do logo */
+            --color-accent: #D4C597; /* Texto dourado do logo */
+            --color-neutral-dark: #333333;
+            --color-neutral-light: #f3f4f6;
+            --color-gradient-darker: #23201d; /* Tom mais escuro para o gradiente */
+        }
+
+        .bg-primary { background-color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .border-accent { border-color: var(--color-accent); }
+        .bg-neutral-dark { background-color: var(--color-neutral-dark); }
+        .bg-neutral-light { background-color: var(--color-neutral-light); }
+
+        html, body {
+             /* Removemos height: 100% e overflow: hidden para permitir o scroll */
+             overflow-x: hidden; /* Evita scroll horizontal indesejado */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-neutral-light); /* Cor de texto padrão */
+            /* Removemos display:flex e flex-direction:column para o layout de scroll */
+            /* Fundo com gradiente animado para um visual mais dinâmico */
+            background: linear-gradient(-45deg, var(--color-neutral-dark), var(--color-primary), var(--color-gradient-darker), var(--color-neutral-dark));
+            background-size: 400% 400%;
+            animation: gradient-animation 20s ease infinite;
+        }
+
+        /* Animação do gradiente de fundo */
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Estilos para o efeito "liquid glass" / "fluent design" */
+        .glass-effect {
+            background-color: rgba(91, 82, 74, 0.6); /* Cor primária com transparência */
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(212, 197, 151, 0.3); /* Borda transparente com cor de acento */
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glass-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 8px 8px rgba(0, 0, 0, 0.15);
+        }
+    </style>
 
     <script>
         // Configuração personalizada do Tailwind CSS para usar as variáveis CSS
@@ -55,7 +115,7 @@
 <body class="bg-neutral-dark text-neutral-light">
 
     <!-- Cabeçalho / Navbar com efeito de desfoque -->
-    <header class="w-full py-4 px-6 md:px-12 bg-primary/80 backdrop-blur-sm shadow-lg z-50">
+    <header class="w-full py-4 px-6 md:px-12 bg-primary/80 backdrop-blur-sm shadow-lg z-50 sticky top-0">
         <nav class="container mx-auto flex justify-between items-center">
             <!-- Logo ou Nome do Escritório -->
             <a href="#home" class="flex items-center space-x-2">
@@ -92,22 +152,7 @@
         </div>
     </header>
 
-    <main class="flex-grow flex flex-col items-center justify-center">
-        <!-- Seção Hero -->
-        <section id="home" class="relative w-full flex-grow flex items-center justify-center p-4 overflow-hidden">
-            <div class="relative z-10 text-center max-w-4xl glass-effect p-8 md:p-12">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-accent mb-4">
-                    Parceiros Estratégicos na Defesa dos Seus Direitos
-                </h1>
-                <p class="text-lg md:text-xl text-neutral-light mb-8 max-w-3xl mx-auto text-justify">
-                    Oferecemos uma assessoria jurídica personalizada e única para o seu caso, pautada pela ética, transparência e dedicação total. Descubra a tranquilidade de ter uma equipe competente e comprometida ao seu lado.
-                </p>
-                <a href="servicos.html" class="inline-block bg-accent text-primary font-bold text-lg py-3 px-8 rounded-lg shadow-lg hover:bg-white hover:text-primary transform hover:scale-105 transition-all duration-300">
-                    Conheça Nossos Serviços
-                </a>
-            </div>
-        </section>
-
+    <main>
         <!-- NOVA SEÇÃO DE ALERTA DE GOLPE -->
         <section id="alerta-golpe" class="w-full bg-red-800/90 py-8 px-4">
             <div class="container mx-auto max-w-4xl text-center text-white rounded-lg border-2 border-red-300 p-6 shadow-2xl">
@@ -137,6 +182,22 @@
             </div>
         </section>
         <!-- FIM DA SEÇÃO DE ALERTA -->
+        
+        <!-- Seção Hero -->
+        <section id="home" class="relative w-full min-h-screen flex items-center justify-center p-4 overflow-hidden">
+            <div class="relative z-10 text-center max-w-4xl glass-effect p-8 md:p-12">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-accent mb-4">
+                    Parceiros Estratégicos na Defesa dos Seus Direitos
+                </h1>
+                <p class="text-lg md:text-xl text-neutral-light mb-8 max-w-3xl mx-auto text-justify">
+                    Oferecemos uma assessoria jurídica personalizada e única para o seu caso, pautada pela ética, transparência e dedicação total. Descubra a tranquilidade de ter uma equipe competente e comprometida ao seu lado.
+                </p>
+                <a href="servicos.html" class="inline-block bg-accent text-primary font-bold text-lg py-3 px-8 rounded-lg shadow-lg hover:bg-white hover:text-primary transform hover:scale-105 transition-all duration-300">
+                    Conheça Nossos Serviços
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <!-- Rodapé -->
@@ -155,6 +216,16 @@
         </div>
     </footer>
 
-    <script src="script-index.js" defer></script>
+    <script>
+        // Script para o menu mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
